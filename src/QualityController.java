@@ -1,7 +1,7 @@
 import java.math.BigDecimal;
 
 public class QualityController extends Employee {
-    private static final BigDecimal QUALITY_CONTROL_BONUS = new BigDecimal(0.12);
+    private static final BigDecimal QUALITY_CONTROL_BONUS = new BigDecimal(0.12);               //change all this to double
 
     public QualityController(String name, int cakesCovered, BigDecimal wageRate) {
         super(name, cakesCovered, wageRate);

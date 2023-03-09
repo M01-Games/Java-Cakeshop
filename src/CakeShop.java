@@ -5,7 +5,7 @@ import java.util.List;
 public class CakeShop {
     public static void main(String[] args) {
         // Create employees and add them to a list
-        List<Employee> employees = new ArrayList<>();
+        List<Employee> employees = new ArrayList<>();        //Add this list into team class
         employees.add(new Employee("Andrew", 162));
         employees.add(new Employee("Hafsa", 34));
         employees.add(new Employee("Ayub", 193));

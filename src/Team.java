@@ -37,7 +37,7 @@ public class Team {
         System.out.println();
     }
     
-    public void printTeamStatistics() {
+    public void printTeamStatistics() {                     //split up in to individual methods - 1 job to 1 method
         int totalCakesCovered = 0;
         double totalWages = 0;
         for (Employee employee : employees) {

@@ -24,7 +24,7 @@ public class Employee {
         return wageRate;
     }
 
-    public BigDecimal calculateWages() {
+    public BigDecimal calculateWages() {                                                //change this to double
         BigDecimal wage = BigDecimal.ZERO;
         int cakes = cakesCovered;
         if (cakes > 50) {
@@ -34,7 +34,7 @@ public class Employee {
         } else {
             wage = wage.add(new BigDecimal(cakes).multiply(wageRate));
         }
-        return wage.setScale(2, RoundingMode.HALF_UP);
+        return wage.setScale(2, RoundingMode.HALF_UP);                         //remove the rounding not need as it is formatted later
     }
 
     public void addCakes(int cakes) {
