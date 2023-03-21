@@ -1,64 +1,69 @@
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
 public class Team {
-    private List<Employee> employees = new ArrayList<>();
-    
+    private List<Employee> employees;
+
+    public Team(List<Employee> employees) {
+        this.employees = employees;
+    }
+
     public void addEmployee(Employee employee) {
         employees.add(employee);
     }
-    
-    public void addQualityController(QualityController qualityController) {
-        employees.add(qualityController);
+
+    public void removeEmployee(Employee employee) {
+        employees.remove(employee);
     }
-    
-    public void updateEmployeeCakes(String name, int additionalCakes, int unsuitableCakes) {
-        for (Employee employee : employees) {
-            if (employee.getName().equals(name)) {
-                employee.addCakes(additionalCakes);
-                employee.subtractCakes(unsuitableCakes);
-                break;
-            }
-        }
+
+    public List<Employee> getEmployees() {
+        return employees;
     }
-    
-    public void printEmployeeDetails() {
-        DecimalFormat df = new DecimalFormat("0.00");
-        System.out.printf("%-15s %-15s %-15s %-15s\n", "Name", "Cakes Covered", "Wages", "Type");
-        for (Employee employee : employees) {
-            String type = employee instanceof QualityController ? "QC" : "Employee";
-            double wages = employee.calculateWages();
-            System.out.printf("%-15s %-15d %-15s %-15s\n", employee.getName(), employee.getCakesCovered(),
-                    "£" + df.format(wages), type);
-        }
-        System.out.println();
-    }
-    
-    public void printTeamStatistics() {                     //split up in to individual methods - 1 job to 1 method
+
+    public int getTotalCakesCovered() {
         int totalCakesCovered = 0;
-        double totalWages = 0;
         for (Employee employee : employees) {
             totalCakesCovered += employee.getCakesCovered();
+        }
+        return totalCakesCovered;
+    }
+
+    public double getTotalWages() {
+        double totalWages = 0;
+        for (Employee employee : employees) {
             totalWages += employee.calculateWages();
         }
-        DecimalFormat df = new DecimalFormat("0.00");
-        System.out.println("Team Performance:");
-        System.out.println("Total Cakes Covered: " + totalCakesCovered);
-        System.out.println("Total Wages: £" + df.format(totalWages));
+        return totalWages;
     }
-    
-    public void sortEmployeesByCakesCovered() {
+
+    public void displaySummary() {
+        // Display table of team summary
+        System.out.printf("\nTeam summary:\n");
+        System.out.printf("| %-10s | %-15s | %-15s |\n", "Employee", "Cakes Covered", "Wages");
+        System.out.println("+------------+-----------------+-----------------+");
+        for (Employee employee : employees) {
+            String employeeName = employee instanceof QualityController ? "QC " + employee.getName() : employee.getName();
+            System.out.printf("| %-10s | %-15d | £%-14.2f |\n", employeeName, employee.getCakesCovered(), employee.calculateWages());
+        }
+        System.out.println("+------------+-----------------+-----------------+");
+
+        // Display total cakes covered and total wages
+        System.out.printf("Total cakes covered: %d\n", getTotalCakesCovered());
+        System.out.printf("Total wages: £%.2f\n", getTotalWages());
+    }
+
+    public void sortEmployees() {
+        // Sort employees by cakes covered (descending), then by name (ascending)
         Collections.sort(employees, new Comparator<Employee>() {
             @Override
-            public int compare(Employee emp1, Employee emp2) {
-                if (emp1.getCakesCovered() == emp2.getCakesCovered()) {
-                    return emp1.getName().compareTo(emp2.getName());
-                } else {
-                    return emp2.getCakesCovered() - emp1.getCakesCovered();
+            public int compare(Employee e1, Employee e2) {
+                int result = Integer.compare(e2.getCakesCovered(), e1.getCakesCovered());
+                if (result == 0) {
+                    result = e1.getName().compareTo(e2.getName());
                 }
+                return result;
             }
         });
     }

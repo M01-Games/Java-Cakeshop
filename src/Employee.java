@@ -1,15 +1,10 @@
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-
 public class Employee {
     private String name;
     private int cakesCovered;
-    private BigDecimal wageRate;
 
-    public Employee(String name, int cakesCovered, BigDecimal wageRate) {
+    public Employee(String name, int cakesCovered) {
         this.name = name;
         this.cakesCovered = cakesCovered;
-        this.wageRate = wageRate;
     }
 
     public String getName() {
@@ -20,22 +15,20 @@ public class Employee {
         return cakesCovered;
     }
 
-    public BigDecimal getWageRate() {
-        return wageRate;
+    public void setCakesCovered(int cakesCovered) {
+        this.cakesCovered = cakesCovered;
     }
 
-    public BigDecimal calculateWages() {                                                //change this to double
-        BigDecimal wage = BigDecimal.ZERO;
-        int cakes = cakesCovered;
-        if (cakes > 50) {
-            wage = wage.add(new BigDecimal(50).multiply(wageRate));
-            cakes -= 50;
-            wage = wage.add(new BigDecimal(cakes).multiply(wageRate.add(new BigDecimal(0.05))));
+    public double calculateWages() {
+        double wages;
+        if (cakesCovered <= 50) {
+            wages = cakesCovered * 0.1;
         } else {
-            wage = wage.add(new BigDecimal(cakes).multiply(wageRate));
+            wages = (50 * 0.1) + ((cakesCovered - 50) * 0.15);
         }
-        return wage.setScale(2, RoundingMode.HALF_UP);                         //remove the rounding not need as it is formatted later
+        return wages;
     }
+
 
     public void addCakes(int cakes) {
         if (cakes >= 0) {
@@ -47,7 +40,7 @@ public class Employee {
 
     public void subtractCakes(int cakes) {
         if (cakes >= 0 && cakes <= cakesCovered) {
-            cakesCovered -= cakes;
+            cakesCovered -= cakes * 2;
         } else {
             System.out.println("Invalid number of cakes.");
         }
