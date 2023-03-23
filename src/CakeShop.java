@@ -5,7 +5,7 @@ public class CakeShop {
     public static void main(String[] args) {
         // Create employees and add them to a list
         List<Employee> employees = new ArrayList<>();
-        Employee bob = new Employee("Bob", 100)
+        Employee bob = new Employee("Bob", 100);
         employees.add(bob);
         employees.add(new Employee("Andrew", 162));
         employees.add(new Employee("Hafsa", 34));
@@ -16,8 +16,8 @@ public class CakeShop {
         employees.add(new QualityController("Rabia", 385));
         Team team = new Team(employees);
 
-        employees.get(0).addCakes(0);
-        employees.get(0).subtractCakes(6);
+        bob.addCakes(0);
+        bob.subtractCakes(6);
 
         employees.get(1).addCakes(32);
         employees.get(1).subtractCakes(16);
