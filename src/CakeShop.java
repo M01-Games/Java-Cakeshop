@@ -6,36 +6,48 @@ public class CakeShop {
         // Create employees and add them to a list
         List<Employee> employees = new ArrayList<>();
         Employee bob = new Employee("Bob", 100);
+        Employee andrew = new Employee("Andrew", 162);       
+        Employee hafsa = new Employee("Hafsa", 34);     
+        Employee ayub = new Employee("Ayub", 193);
+        Employee amaan = new Employee("Amaan", 309);         
+        Employee gary = new Employee("Gary", 49);        
+        Employee diane = new Employee("Diane", 217);
+        Employee rabia = new QualityController("Rabia", 385);                
+
         employees.add(bob);
-        employees.add(new Employee("Andrew", 162));
-        employees.add(new Employee("Hafsa", 34));
-        employees.add(new Employee("Ayub", 193));
-        employees.add(new Employee("Amaan", 309));
-        employees.add(new Employee("Gary", 49));
-        employees.add(new Employee("Diane", 217));
-        employees.add(new QualityController("Rabia", 385));
+        employees.add(andrew);
+        employees.add(hafsa);
+        employees.add(ayub);
+        employees.add(amaan);
+        employees.add(gary);
+        employees.add(diane);
+        employees.add(rabia);
+
         Team team = new Team(employees);
+
+        team.sortEmployees();
+        team.displaySummary();
 
         bob.addCakes(0);
         bob.subtractCakes(6);
 
-        employees.get(1).addCakes(32);
-        employees.get(1).subtractCakes(16);
+        andrew.addCakes(32);
+        andrew.subtractCakes(16);
 
-        employees.get(2).addCakes(44);
-        employees.get(2).subtractCakes(21);
+        hafsa.addCakes(44);
+        hafsa.subtractCakes(21);
 
-        employees.get(3).addCakes(102);
-        employees.get(3).subtractCakes(12);
+        ayub.addCakes(102);
+        ayub.subtractCakes(12);
 
-        employees.get(4).addCakes(56);
-        employees.get(4).subtractCakes(1);
+        amaan.addCakes(56);
+        amaan.subtractCakes(1);
 
-        employees.get(5).addCakes(62);
-        employees.get(5).subtractCakes(11);
+        gary.addCakes(62);
+        gary.subtractCakes(11);
 
-        employees.get(6).addCakes(10);
-        employees.get(6).subtractCakes(2);
+        diane.addCakes(10);
+        diane.subtractCakes(2);
 
         team.sortEmployees();
         team.displaySummary();
