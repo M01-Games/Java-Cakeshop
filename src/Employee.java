@@ -34,7 +34,7 @@ public class Employee {
         if (cakes >= 0) {
             cakesCovered += cakes;
         } else {
-            System.out.println("Invalid number of cakes.");
+            System.out.println("Invalid number of cakes.");                 //Execptions
         }
     }
 
@@ -42,7 +42,7 @@ public class Employee {
         if (cakes >= 0 && cakes <= cakesCovered) {
             cakesCovered -= cakes * 2;
         } else {
-            System.out.println("Invalid number of cakes.");
+            System.out.println("Invalid number of cakes.");                 //Execptions
         }
     }
 }
