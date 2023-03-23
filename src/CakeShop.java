@@ -5,7 +5,8 @@ public class CakeShop {
     public static void main(String[] args) {
         // Create employees and add them to a list
         List<Employee> employees = new ArrayList<>();
-        employees.add(new Employee("Bob", 100));
+        Employee bob = new Employee("Bob", 100)
+        employees.add(bob);
         employees.add(new Employee("Andrew", 162));
         employees.add(new Employee("Hafsa", 34));
         employees.add(new Employee("Ayub", 193));
